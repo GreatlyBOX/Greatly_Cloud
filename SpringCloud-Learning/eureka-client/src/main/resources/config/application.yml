@@ -1,0 +1,21 @@
+spring:
+  application: #微服务名称
+    name:  eureka-client
+eureka:   #组册中心配置
+  instance:
+    prefer-ip-address: true #以IP形式注册
+    instance-id: ${spring.cloud.client.ipAddress}:${spring.application.name}:${server.port}
+    lease-renewal-interval-in-seconds: 30      # 心跳时间，即服务续约间隔时间（缺省为30s）
+    lease-expiration-duration-in-seconds: 90  # 发呆时间，即服务续约到期时间（缺省为90s）
+  client:
+    service-url:
+      defaultZone: http://${security.user.name}:${security.user.password}@peer1:11111/eureka/,http://${security.user.name}:${security.user.password}@peer2:11112/eureka/
+
+security: #服务安全配置
+  basic:
+    enabled: true      #开启基于HTTP basic的认证
+  user:
+    name: user
+    password: 123456
+server:
+  port: 6002
