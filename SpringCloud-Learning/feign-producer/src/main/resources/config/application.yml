@@ -1,6 +1,8 @@
 spring:
-  application: #微服务名称
-    name:  eureka-client
+  application:
+    name: feign-producer
+server:
+  port: 2002
 eureka:   #组册中心配置
   instance:
     prefer-ip-address: true #以IP形式注册
@@ -9,8 +11,5 @@ eureka:   #组册中心配置
     lease-expiration-duration-in-seconds: 90  # 发呆时间，即服务续约到期时间（缺省为90s）
   client:
     service-url:
-      defaultZone: http://user:123456@localhost:11111/eureka/
+      defaultZone: http://user:123456@127.0.0.1:11111/eureka/
 
-
-server:
-  port: 6002
