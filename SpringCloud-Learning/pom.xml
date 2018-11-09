@@ -11,6 +11,10 @@
     <modules>
         <module>eureka-server</module>
         <module>eureka-client</module>
+        <module>feign-consumer</module>
+        <module>feign-producer</module>
+        <module>gateway-client</module>
+        <module>gateway-server</module>
     </modules>
 
 </project>
