@@ -1,0 +1,48 @@
+spring:
+  profiles:
+    active: pro #所在配置文件
+  application: #微服务名称
+    name: config-client
+  cloud:
+    config:
+            # 配置中心地址
+            profile: pro
+            # 要读取的配置文件名
+            name: ${spring.application.name}
+
+            # 对应服务端security设置的用户名密码
+            username: user
+            password: 123456
+            discovery:
+             #指定server端的name,也就是server端
+             service-id: config-server
+             #开启Config服务发现支持
+             enabled: true
+            #失败快速响应,加入重试机制
+            fail-fast: true
+            retry:
+              # 初始重试间隔时间，默认1000ms
+              initial-interval: 3000
+              # 配置重试次数，默认为6
+              max-attempts: 6
+             # 间隔乘数，默认1.1
+              multiplier: 1.1
+              # 最大间隔时间，默认2000ms
+              max-interval: 2000
+#            uri: http://localhost:20001/
+            #默认它会寻找本地的8888端口的配置服务。你可以修改bootstrap.yml文件配置服务的uri
+eureka:   #组册中心配置
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ipAddress}:${spring.application.name}:${server.port}
+    lease-renewal-interval-in-seconds: 30      # 心跳时间，即服务续约间隔时间（缺省为30s）
+    lease-expiration-duration-in-seconds: 90  # 发呆时间，即服务续约到期时间（缺省为90s）
+  server:
+   hostname: localhost
+   appname: eureka
+   port: 11111
+  client:
+    service-url:
+      defaultZone: http://user:123456@127.0.0.1:11111/eureka
+
+

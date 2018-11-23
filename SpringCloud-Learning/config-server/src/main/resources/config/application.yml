@@ -1,0 +1,50 @@
+server:
+  port: 7001
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          search-paths: pro
+          password: admin
+          username: admin
+          uri: http://admin@192.168.3.34:3000/r/Config.git
+  #MQ的配置信息
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: test
+    password: test
+
+
+eureka:   #注册中心配置
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ipAddress}:${spring.application.name}:${server.port}
+    lease-renewal-interval-in-seconds: 30      # 心跳时间，即服务续约间隔时间（缺省为30s）
+    lease-expiration-duration-in-seconds: 90  # 发呆时间，即服务续约到期时间（缺省为90s）
+  server:
+    hostname: localhost
+    appname: eureka
+    port: 11111
+  client:
+    service-url:
+        defaultZone:  http://${security.user.name}:${security.user.password}@127.0.0.1:11111/eureka/
+
+
+#服务安全配置
+security:
+  basic:
+    enabled: true      #开启基于HTTP basic的认证
+  user:
+    name: user
+    password: 123456
+
+management:  #刷新时关闭验证
+  security:
+    enabled: false

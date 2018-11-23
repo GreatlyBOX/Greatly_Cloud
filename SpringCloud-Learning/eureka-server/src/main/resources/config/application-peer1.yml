@@ -2,7 +2,7 @@ spring:
   application:
     name: eureka-server
 server:
-  port: 11111
+  port: 8000
 
 eureka:
   instance:
@@ -13,7 +13,7 @@ eureka:
     register-with-eureka: false #,由于我们目前创建的应用是一个服务注册中心，而不是普通的应用，默认情况下，这个应用会向注册中心（也是它自己）注册它自己，设置为false表示禁止这种默认行为
     fetch-registry: false #表示不去检索其他的服务，因为服务注册中心本身的职责就是维护服务实例，它也不需要去检索其他服务
     service-url:
-      defaultZone: http://${security.user.name}:${security.user.password}@peer2:11112/${eureka.instance.appname}/
+      defaultZone: http://${security.user.name}:${security.user.password}@peer2:8001/${eureka.instance.appname}/,http://${security.user.name}:${security.user.password}@192.168.1.111:8000/${eureka.instance.appname}/
 security:
   basic:
     enabled: true       #开启基于HTTP basic的认
