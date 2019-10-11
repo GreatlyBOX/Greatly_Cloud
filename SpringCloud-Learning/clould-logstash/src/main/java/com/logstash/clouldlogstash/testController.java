@@ -12,6 +12,7 @@ public class testController {
     @RequestMapping("test")
     public @ResponseBody String test(){
         logger.info("测试日志");
+        String c="a"+"b";
         return "s";
     }
 }

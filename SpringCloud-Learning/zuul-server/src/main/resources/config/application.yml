@@ -1,6 +1,6 @@
 spring:
   application:
-    name: gateway-server
+    name: zuul-server
 server:
   port: 3003
 eureka:   #组册中心配置
