@@ -18,6 +18,8 @@
         <module>zuul-server</module>
         <module>config-server</module>
         <module>gateway-stomp</module>
+        <module>hystrix-dashboard</module>
+        <module>hystrix-turbine</module>
     </modules>
 
 </project>
