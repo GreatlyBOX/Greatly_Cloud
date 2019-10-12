@@ -1,5 +1,5 @@
 server:
-  port: 8084
+  port: 5555
 spring:
   application:
     name: gateway-server
@@ -8,7 +8,9 @@ spring:
     gateway:
       discovery:
         locator:
+          # 自动路由 模式 大写的服务名路由
           enabled: false
+          # 小写 服务名 默认大写
           lowerCaseServiceId: true
       routes:
       - id: gateway-client
@@ -23,8 +25,27 @@ spring:
         - Path=/baidu/**
         filters:
         - StripPrefix=1
+      #spring.cloud.gateway.discovery.enabled= false,websocket可以，网关的本服务http服务路由失败;
+      #但是如果配置改为spring.cloud.gateway.discovery.enabled= true,websocket不可以，报跨域的错误
+      #所以暂时为拥有soket服务的 配置一个http路由   一个soket路由
+      # stomp soket 配置
+      - id: gateway-stomp-soket
+        uri: lb://gateway-stomp
+        predicates:
+        - Path=/stomp/info/**
+      - id: gateway-stomp-soket
+        uri: lb:ws://gateway-stomp
+        predicates:
+        - Path=/stomp/**
+      # stomp http 配置
+      - id: gateway-stomp-api
+        uri: lb://gateway-stomp
+        predicates:
+        - Path=/apistomp/**
+        filters:
+        - StripPrefix=1
 
-eureka:   #组册中心配置
+eureka:   #注册中心配置
   instance:
     prefer-ip-address: true #以IP形式注册
     instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}

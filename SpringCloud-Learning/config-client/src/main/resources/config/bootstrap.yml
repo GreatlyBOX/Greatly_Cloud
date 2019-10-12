@@ -31,7 +31,7 @@ spring:
               max-interval: 2000
 #            uri: http://localhost:20001/
             #默认它会寻找本地的8888端口的配置服务。你可以修改bootstrap.yml文件配置服务的uri
-eureka:   #组册中心配置
+eureka:   #注册中心配置
   instance:
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ipAddress}:${spring.application.name}:${server.port}

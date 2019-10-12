@@ -1,7 +1,7 @@
 spring:
   application: #微服务名称
     name:  eureka-client
-eureka:   #组册中心配置
+eureka:   #注册中心配置
   instance:
     prefer-ip-address: true #以IP形式注册
     instance-id: ${spring.cloud.client.ipAddress}:${spring.application.name}:${server.port}
