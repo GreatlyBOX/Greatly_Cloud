@@ -18,7 +18,8 @@ public class WebSocketAutoConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/stomp") //开启/bullet端点
+        registry.addEndpoint("/stomp")
+                //开启/bullet端点
                 .setHandshakeHandler(new DefaultHandshakeHandler() {
                     @Override
                     protected Principal determineUser(ServerHttpRequest request, WebSocketHandler wsHandler, Map<String, Object> attributes) {
@@ -29,8 +30,10 @@ public class WebSocketAutoConfig implements WebSocketMessageBrokerConfigurer {
                 })
                 //添加socket拦截器
                 .addInterceptors(new HandleShakeInterceptors())
-                .setAllowedOrigins("*")             //允许跨域访问
-                .withSockJS();                      //使用sockJS
+                .setAllowedOrigins("*")
+                //允许跨域访问
+                .withSockJS();
+                //使用sockJS
     }
 
     @Override

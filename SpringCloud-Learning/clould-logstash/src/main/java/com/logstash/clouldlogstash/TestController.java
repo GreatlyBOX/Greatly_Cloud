@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class testController {
+public class TestController {
     private final static Logger logger = LoggerFactory.getLogger(ClouldLogstashApplication.class);
     @RequestMapping("test")
     public @ResponseBody String test(){
