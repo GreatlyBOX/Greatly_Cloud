@@ -55,6 +55,7 @@ public class WebSocketAutoConfig implements WebSocketMessageBrokerConfigurer {
             this.name = name;
         }
 
+        @Override
         public String getName() {
             return name;
         }

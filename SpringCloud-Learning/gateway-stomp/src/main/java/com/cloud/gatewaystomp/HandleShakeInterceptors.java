@@ -32,6 +32,7 @@ public class HandleShakeInterceptors implements HandshakeInterceptor {
      * @throws Exception
      */
 
+    @Override
     public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response,
                                    WebSocketHandler wsHandler, Map<String, Object> attributes) throws Exception {
         String URI = request.getURI().toString();
@@ -50,6 +51,7 @@ public class HandleShakeInterceptors implements HandshakeInterceptor {
      * @param wsHandler
      * @param exception
      */
+    @Override
     public void afterHandshake(ServerHttpRequest request, ServerHttpResponse response,
                                WebSocketHandler wsHandler, Exception exception) {
         logger.info("进来webSocket的afterHandshake拦截器！");
