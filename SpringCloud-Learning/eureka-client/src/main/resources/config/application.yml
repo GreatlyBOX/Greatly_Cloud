@@ -5,8 +5,11 @@ eureka:   #注册中心配置
   instance:
     prefer-ip-address: true #以IP形式注册
     instance-id: ${spring.cloud.client.ipAddress}:${spring.application.name}:${server.port}
-    lease-renewal-interval-in-seconds: 30      # 心跳时间，即服务续约间隔时间（缺省为30s）
-    lease-expiration-duration-in-seconds: 90  # 发呆时间，即服务续约到期时间（缺省为90s）
+    lease-renewal-interval-in-seconds: 5      # 心跳时间，即服务续约间隔时间（缺省为30s）
+    lease-expiration-duration-in-seconds: 10  # 发呆时间，即服务续约到期时间（缺省为90s）
+  server:
+    # 超时读取时间 200000
+    peer-node-read-timeout-ms: 200000
   client:
     service-url:
       defaultZone: http://user:123456@localhost:11111/eureka/
