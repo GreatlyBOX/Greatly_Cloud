@@ -20,6 +20,8 @@
         <module>gateway-stomp</module>
         <module>hystrix-dashboard</module>
         <module>hystrix-turbine</module>
+        <module>clould-logstash</module>
+        <module>config-client</module>
     </modules>
 
 </project>
