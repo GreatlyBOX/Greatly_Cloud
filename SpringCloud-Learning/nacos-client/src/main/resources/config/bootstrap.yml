@@ -1,0 +1,24 @@
+#指定端口号
+server:
+  port: 8001
+#指定微服务名
+spring:
+  application:
+    name: nacos-client
+  cloud:
+    nacos:
+      config:
+        # nacos配置中心的地址
+        server-addr: 127.0.0.1:8848
+        #指定yaml格式配置
+        file-extension: yml
+        prefix: nacos-client
+        #        namespace: 3410165c-0a47-4f4d-9366-53eb841bd255 #命名空间
+        #分组
+        group: TINA_DEV_GROUP
+        timeout: 60000
+        namespace: dev
+        #nacos注册中心的地址
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: dev

@@ -22,6 +22,7 @@
         <module>hystrix-turbine</module>
         <module>clould-logstash</module>
         <module>config-client</module>
+        <module>clould-redisson</module>
     </modules>
 
 </project>
